@@ -9,3 +9,10 @@ class CustomUser(AbstractUser):
     )
     user_type = models.CharField(choices=USER, max_length=50, default=1)
     profile_pic = models.ImageField(upload_to='media/profile_pic')
+
+
+class Active(models.Model):
+    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    gender = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
